@@ -1,5 +1,6 @@
 ---
 import { TITLE_NAV, NAV_LINKS } from '../../constants/nav';
+const pathname = Astro.url.pathname;
 ---
 
 <nav class="bg-gray-800 text-white">
@@ -9,9 +10,17 @@ import { TITLE_NAV, NAV_LINKS } from '../../constants/nav';
         {TITLE_NAV}
       </a>
     </li>
+
     {NAV_LINKS.map((link) => (
       <li>
-        <a href={link.href} class="hover:text-blue-400 transition-colors">
+        <a
+          href={link.href}
+          class={`transition-colors font-medium ${
+            pathname === link.href
+              ? 'text-yellow-400 underline'
+              : 'text-white hover:text-blue-400'
+          }`}
+        >
           {link.name}
         </a>
       </li>
