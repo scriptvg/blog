@@ -1,0 +1,20 @@
+---
+import { TITLE_NAV, NAV_LINKS } from '../../constants/nav';
+---
+
+<nav class="bg-gray-800 text-white">
+  <ul class="flex items-center gap-6 p-4">
+    <li class="text-2xl font-extrabold mr-auto">
+      <a href="/" class="hover:text-blue-400 transition-colors">
+        {TITLE_NAV}
+      </a>
+    </li>
+    {NAV_LINKS.map((link) => (
+      <li>
+        <a href={link.href} class="hover:text-blue-400 transition-colors">
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
