@@ -1,0 +1,12 @@
+---
+import { Menu, X } from '@lucide/astro';
+const { isOpen, toggleMenu } = Astro.props;
+---
+
+<button class="md:hidden" on:click={toggleMenu} aria-label="Abrir o cerrar menú">
+  {isOpen ? (
+    <X class="w-6 h-6 text-white" />
+  ) : (
+    <Menu class="w-6 h-6 text-white" />
+  )}
+</button>

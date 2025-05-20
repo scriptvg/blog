@@ -4,29 +4,40 @@ const pathname = Astro.url.pathname;
 const { title } = Astro.props;
 ---
 
-<nav class="bg-gray-800 text-white shadow-md">
-  <div class="flex items-center justify-between px-6 py-4">
-    <!-- IZQUIERDA: logo / home -->
-    <div class="text-xl font-bold">
-      <a href="/" class="hover:text-blue-400 transition-colors">
-        {TITLE_NAV_MANGA}
-      </a>
+<nav class="bg-gray-900 text-white shadow-lg">
+  <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between px-6 py-4">
+    
+    <!-- IZQUIERDA: Logo / Nombre -->
+    <div class="text-2xl font-extrabold tracking-tight text-white hover:text-yellow-400 transition-colors">
+      <a href="/">{TITLE_NAV_MANGA}</a>
     </div>
 
-    <!-- CENTRO: título del manga -->
-    <div class="text-center text-lg font-semibold text-yellow-300 hidden md:block">
-      {title}
+    <!-- CENTRO: Breadcrumb -->
+    <div class="text-sm text-yellow-300 overflow-x-auto whitespace-nowrap max-w-full">
+      <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li>
+            <a href="/" class="hover:underline hover:text-yellow-400">Inicio</a>
+            <span class="mx-1 text-gray-400">/</span>
+          </li>
+          <li>
+            <a href="/mangas" class="hover:underline hover:text-yellow-400">Biblioteca</a>
+            <span class="mx-1 text-gray-400">/</span>
+          </li>
+          <li class="truncate font-semibold text-yellow-300">{title}</li>
+        </ol>
+      </nav>
     </div>
 
-    <!-- DERECHA: enlaces -->
-    <ul class="flex items-center gap-4">
+    <!-- DERECHA: Enlaces -->
+    <ul class="flex flex-wrap gap-4 justify-center md:justify-end text-sm">
       {NAV_LINKS_MANGA.map((link) => (
         <li>
           <a
             href={link.href}
             class={`transition-colors font-medium ${
-              pathname === link.href
-                ? 'text-yellow-400 underline'
+              pathname.startsWith(link.href)
+                ? 'text-yellow-400 underline underline-offset-4'
                 : 'text-white hover:text-blue-400'
             }`}
           >
