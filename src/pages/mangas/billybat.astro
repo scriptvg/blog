@@ -1,14 +1,11 @@
 ---
-import MangaPage from "../../components/app/MangaCard.astro";
 import Layout from "../../layouts/MangaLayout.astro";
 
-const manga = {
+const manga_autor = {
   title: "Billy Bat",
-  description: "Billy Bat es un manga de conspiraciones sobre secretos, historietas y realidad alternativa.",
-  imageUrl: "/img/dc161b83df0468ad31715b51e2b60eb7.jpg"
 };
 ---
 
-<Layout title={manga.title} >
-    <MangaPage {...manga} />
+<Layout title={manga_autor.title} >
+    
 </Layout>
